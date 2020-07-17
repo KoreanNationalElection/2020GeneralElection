@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+		<!--페이스북 공유-->
+		<meta property="og:url" content="https://produce300.com" />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="4월 총선 알리미" />
+		<meta property="og:description" content="4월 총선 지도 기반 서비스" />
+		<meta
+			name="keywords"
+			content="총선, 4월 총선, 21대 총선, 2020년 총선, 선거, 국회의원 선거, 21대 국회의원, 총선 알리미, 총선 지도, 총선맵, 총선 후보, 국회의원 후보"
+		/>
+		<title>4월 총선 알리미</title>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-161100045-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || []
+			function gtag() {
+				dataLayer.push(arguments)
+			}
+			gtag('js', new Date())
+			gtag('config', 'UA-161100045-1')
+		</script>
+		<!--카카오톡 공유-->
+		<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+	</head>
+	<body>
+		<div id="v-wrap">
+			<!-- 사이드메뉴 -->
+			<button id="v-sidebar-toggle" class="hamburger hamburger--slider" type="button">
+				<span class="hamburger-box">
+					<span class="hamburger-inner"></span>
+				</span>
+			</button>
+			<div id="v-page-cover"><!-- 커버 --></div>
+			<div id="v-sidebar">
+				<div class="v-title">
+					<h2>4월 총선 알리미</h2>
+					<div class="v-timer" id="d-day"></div>
+				</div>
+				<ul class="v-menu">
+					<li id="get-elect21-btn">21대 총선 정보</li>
+					<li id="get-elect20-btn">20대 총선 결과</li>
+				</ul>
+				<div class="v-search">
+					<ul class="v-search-checkbox">
+						<li>
+							<input
+								type="radio"
+								id="v-search-sgg"
+								name="v-search-selector"
+								value="sgg"
+							/>
+							<label for="v-search-sgg">선거구</label>
+							<div class="check"></div>
+						</li>
+						<li>
+							<input
+								type="radio"
+								id="v-search-candidate"
+								name="v-search-selector"
+								value="candidate"
+							/>
+							<label for="v-search-candidate">후보자</label>
+							<div class="check"><div class="inside"></div></div>
+						</li>
+					</ul>
+					<div class="v-search-sgg-box">
+						<div class="v-search-box">
+							<input
+								id="v-search-sgg-input"
+								class="v-search-input"
+								type="text"
+								placeholder="21대 선거구검색(ex: 서울, ㅅㅇ)"
+							/>
+							<button id="v-search-sgg-reset">
+								<i class="fas fa-times"></i>
+							</button>
+						</div>
+						<ul class="v-search-ul" id="v-search-sgg-ul"></ul>
+					</div>
+					<div class="v-search-cand-box">
+						<div class="v-search-box">
+							<input
+								id="v-search-cand-input"
+								class="v-search-input"
+								type="text"
+								placeholder="21대 후보자검색(ex:홍길동,ㅎㄱㄷ)"
+							/>
+							<button id="v-search-cand-reset">
+								<i class="fas fa-times"></i>
+							</button>
+						</div>
+						<ul class="v-search-ul" id="v-search-cand-ul"></ul>
+					</div>
+				</div>
+				<div class="v-sidebar-bottom">
+					<a href="https://si.nec.go.kr/necsps/sps.SpsSrchVoterPolls.nec" target="_blank">
+						내 투표소 검색
+					</a>
+					<!-- <div class="v-now-box">
+						<p><strong>사전투표소 투표</strong></p>
+						<p>2020. 4. 10(금) ~ 4. 11(토)</p>
+					</div> -->
+					<div>
+						<p><strong>선거일 투표</strong></p>
+						<p>2020. 4. 15(수)</p>
+						<p>[매일 06:00 ~ 18:00]</p>
+					</div>
+					<div>
+						<p><strong>정보제공</strong></p>
+						<p>
+							<a href="http://info.nec.go.kr/" target="_blank">
+								중앙선거관리위원회<br />선거통계시스템
+							</a>
+						</p>
+					</div>
+					<div>
+						<!--카카오톡 공유하기-->
+						<a id="kakao-share-btn" class="share-btn">
+							<img
+								src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"
+							/>
+						</a>
+						<!--페이스북 공유하기-->
+						<a
+							id="fb-share-btn"
+							type="box"
+							target="_blank"
+							class="share-btn"
+							href="http://www.facebook.com/sharer/sharer.php?u=https://produce300.com"
+						>
+							<img src="https://www.facebook.com/images/fb_icon_325x325.png" />
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<!--글씨 크게 보기-->
+			<div id="v-font-toggle" title="글씨 크게 보기">
+				<div></div>
+			</div>
+
+			<!-- 도움말 -->
+			<i id="v-help-toggle" class="fas fa-question-circle" title="도움말"></i>
+			<div class="v-help">
+				<div class="v-help-header">도움말</div>
+				<div class="v-help-contents">
+					<ol>
+						<li>
+							<div>기능</div>
+							<ul>
+								<li>
+									<strong>예비후보자 이름 클릭</strong> 시<br />
+									네이버 통합검색으로 넘어갑니다
+								</li>
+								<li>
+									<strong>전과기록 건수 클릭</strong> 시<br />
+									상세 내역 pdf 조회가 가능합니다
+								</li>
+								<li>
+									현재 위치를 조회할 수 있습니다
+								</li>
+								<li>
+									글씨를 크게 볼 수 있습니다
+								</li>
+							</ul>
+						</li>
+						<li>
+							<div>유의사항</div>
+							<ul>
+								<li>
+									선거구는 실제 위치와 다르게 나타날 수 있습니다
+								</li>
+								<li>
+									데이터가 틀린게 있을 경우
+									<a href="mailto:kge21st@gmail.com">kge21st@gmail.com</a>으로
+									문의 메일 주시면 감사하겠습니다.
+								</li>
+							</ul>
+						</li>
+					</ol>
+				</div>
+			</div>
+
+			<!-- 컨텐츠 -->
+			<div id="v-content">
+				<div class="v-vote-rate">
+					<div class="v-vote-rate-header">
+						<h5>투표율</h5>
+						<div id="v-vote-datail-btn" class="v-vote-datail-btn">
+							<span>전국투표율 보기</span>
+							<i class="fas fa-chevron-down"></i>
+						</div>
+					</div>
+					<div class="v-vote-rate-wrapper">
+						<canvas id="v-vote-rate-canvas" class="v-vote-rate-canvas"></canvas>
+					</div>
+				</div>
+				<div id="v-vote-rate-all-wrapper" class="v-vote-rate-all-wrapper">
+					<canvas id="v-vote-rate-canvas-all" class="v-vote-rate-canvas-all"></canvas>
+				</div>
+				<span class="v-stn v-stn-menu-tri"></span>
+				<ul class="v-stn v-stn-menu">
+					<li class="v-pre-stn">사전투표소</li>
+					<li class="v-dday-stn">당일투표소</li>
+				</ul>
+				<!-- 맵 -->
+				<div id="v-map"></div>
+				<!-- 20대 총선 결과 -->
+				<div id="v-last-party" class="v-float-box">
+					<table class="v-float-info v-last-party-info">
+						<thead>
+							<tr>
+								<th>정당</th>
+								<th>지역구</th>
+								<th>비례대표</th>
+								<th>총합</th>
+								<th>비율</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="party-with-demo">
+								<td>더불어민주당</td>
+								<td>110석</td>
+								<td>13석</td>
+								<td>123석</td>
+								<td>41.0%</td>
+							</tr>
+							<tr class="party-new-nuri">
+								<td>새누리당</td>
+								<td>105석</td>
+								<td>17석</td>
+								<td>122석</td>
+								<td>40.7%</td>
+							</tr>
+							<tr class="party-of-people">
+								<td>국민의당</td>
+								<td>25석</td>
+								<td>13석</td>
+								<td>38석</td>
+								<td>12.7%</td>
+							</tr>
+							<tr class="party-none">
+								<td>무소속</td>
+								<td>11석</td>
+								<td>-</td>
+								<td>11석</td>
+								<td>3.7%</td>
+							</tr>
+							<tr class="party-justice">
+								<td>정의당</td>
+								<td>2석</td>
+								<td>4석</td>
+								<td>6석</td>
+								<td>2.0%</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="v-float-toggle">
+						<div>20대 총선 정당</div>
+						<i class="fas fa-chevron-down"></i>
+					</div>
+				</div>
+				<!-- 21대 예비 후보자 정보 출력 -->
+				<div id="v-pre" class="v-float-box">
+					<div class="v-float-info v-pre-info">
+						<div class="v-pre-tbl-header">
+							<table class="v-pre-tbl">
+								<thead>
+									<tr>
+										<th>후보</th>
+										<th>소속정당</th>
+										<th>기호</th>
+										<th>성명</th>
+										<th>성별</th>
+										<th>나이</th>
+										<th>득표율</th>
+										<!-- <th>&nbsp;</th> -->
+									</tr>
+								</thead>
+							</table>
+						</div>
+						<div class="v-pre-tbl-content"></div>
+					</div>
+					<div class="v-float-toggle">
+						<div></div>
+						<i class="fas fa-chevron-down"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
