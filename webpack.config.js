@@ -155,13 +155,13 @@ module.exports = function(env) {
 		devServer: {
 			host: '0.0.0.0',
 			disableHostCheck: true, // 원격 테스트를 위한 config
-			port: 8080,
+			port: 8090,
 			useLocalIp: true,
 			hot: true,
 			open: true,
 			proxy: {
 				'/api': {
-					target: 'http://localhost:8090',
+					target: 'http://localhost:8080',
 				},
 			},
 			before(app, server) {

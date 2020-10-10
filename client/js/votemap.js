@@ -515,7 +515,8 @@ VoteMap.prototype._setSearch = async function() {
 	// 선거구
 	const searchSgg = new Search(this.data.geoJson21, 'sgg')
 	// 후보자
-	const searchCand = new Search(allCandidate.data.data, 'candidate')
+	// const searchCand = new Search(allCandidate.data.data, 'candidate')
+	const searchCand = new Search(allCandidate.data, 'candidate')
 
 	// 검색결과 클릭시 이벤트 콜백으로 전달
 	searchSgg.bindEvent('selectGeoJson', geoJson => {
